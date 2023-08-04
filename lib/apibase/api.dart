@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:splashit/models/model.dart';
 import 'package:http/http.dart' as http;
 
+import '../models/catemodel.dart';
+
 String link =
-    'https://api.unsplash.com/photos?count=30&client_id=Odh8nQzKbHvqGHEW8UbCU6kxOnalWvdmAGn34Uy3pYs';
+    'https://api.unsplash.com/topics/wallpapers/photos?count=30&client_id=Odh8nQzKbHvqGHEW8UbCU6kxOnalWvdmAGn34Uy3pYs';
 
 class Apibase {
   Future<List<wallmodel>> Randomimages() async {
@@ -38,4 +40,61 @@ class Apibase {
     }
     return parsed;
   }
+}
+
+
+
+class Catbase {
+
+  List<String> cats = [
+    'wallpapers',
+    '3d-renders',
+    'nature',
+    'textures-patterns',
+    'architecture-interior',
+    'film',
+    'street-photography',
+    'experimental',
+    'animals',
+    'fashion-beauty',
+    'business-work',
+    'travel',
+    'people',
+    'spirituality'
+  ];
+
+
+  List<CategoryModel> out = [];
+
+  Future<List<CategoryModel>> getCate() async {
+
+    for(int i = 0; i < cats.length; i++){
+      String link = 'https://api.unsplash.com/topics/${cats[i]}/photos?count=30&client_id=Odh8nQzKbHvqGHEW8UbCU6kxOnalWvdmAGn34Uy3pYs';
+
+      CategoryModel cate = CategoryModel(link: link, name: cats[i]);
+
+      out.add(cate);
+    }
+
+
+    return out;
+  }
+
+  Future<List<wallmodel>> categoryImages(String kil) async {
+
+    List<wallmodel> parsed = [];
+    int i;
+    var response = await http.get(Uri.parse(kil));
+    List data = jsonDecode(response.body);
+    for (i = 0; i < data.length; i++) {
+      wallmodel wm;
+      wm = wallmodel.fromJson(data[i]);
+      parsed.add(wm);
+    }
+    return parsed;
+  }
+
+
+
+
 }

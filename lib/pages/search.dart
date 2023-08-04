@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:splashit/apibase/api.dart';
+import 'package:splashit/components/grid.dart';
 
 import '../models/model.dart';
 
@@ -37,7 +38,7 @@ class _SearchPageState extends State<SearchPage> {
           ),
         ),
         elevation: 0.2,
-        backgroundColor: const Color(0xff121212),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: TextField(
           controller: scnt,
           style: TextStyle(
@@ -51,7 +52,7 @@ class _SearchPageState extends State<SearchPage> {
             focusedBorder: InputBorder.none,
             hintText: 'search here',
             focusColor: Theme.of(context).primaryColor,
-            hintStyle: TextStyle(color: Colors.white.withOpacity(0.2)),
+            hintStyle: TextStyle(color: Theme.of(context).primaryColor.withOpacity(0.2)),
             labelStyle: TextStyle(color: Colors.grey[100]),
             suffixIcon: IconButton(
               onPressed: () {
@@ -62,26 +63,8 @@ class _SearchPageState extends State<SearchPage> {
           ),
         ),
       ),
-      backgroundColor: const Color(0xff121212),
-      body: GridView.count(
-        crossAxisCount: 2,
-        childAspectRatio: 0.6,
-        scrollDirection: Axis.vertical,
-        mainAxisSpacing: 10,
-        crossAxisSpacing: 10,
-        padding: EdgeInsets.symmetric(horizontal: 24,vertical: 14),
-        children: List.generate(
-          parsed.length,
-          (i) => Container(
-            height: 100,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.blue[100],
-                image: DecorationImage(
-                    image: NetworkImage(parsed[i].urls.small), fit: BoxFit.cover),),
-          ),
-        ),
-      ),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: GridInt(trend: parsed)
     );
   }
 }
