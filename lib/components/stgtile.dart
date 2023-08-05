@@ -30,7 +30,7 @@ stgTile({super.key, required this.col,required this.txt,required this.ontap});
           child: Text(
             txt,
             style: GoogleFonts.inter(
-              color: Colors.white,
+              color: Theme.of(context).primaryColor,
               shadows: [
                 const BoxShadow(
                   color: Colors.black38,

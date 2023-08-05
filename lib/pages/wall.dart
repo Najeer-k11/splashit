@@ -92,11 +92,11 @@ class _WallpageState extends State<Wallpage> {
 
     var response = await Dio().get( dwn,
            options: Options(responseType: ResponseType.bytes));
+    Fluttertoast.showToast(msg: 'wallpaper downloading');
     await ImageGallerySaver.saveImage(
            Uint8List.fromList(response.data),
            quality: 100,
            name: name);
-    Fluttertoast.showToast(msg: 'wallpaper downloading');
 
   }
 }

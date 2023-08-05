@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:splashit/colors/colors.dart';
 import 'package:splashit/pages/home.dart';
 
