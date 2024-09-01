@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import '../models/catemodel.dart';
 
 String link =
-    'https://api.unsplash.com/topics/wallpapers/photos?count=30&client_id=Odh8nQzKbHvqGHEW8UbCU6kxOnalWvdmAGn34Uy3pYs';
+    'https://api.unsplash.com/topics/wallpapers/photos?count=30&client_id=<yours_apikey>';
 
 class Apibase {
   Future<List<wallmodel>> Randomimages() async {
