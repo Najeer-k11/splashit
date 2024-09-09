@@ -25,7 +25,7 @@ class Apibase {
   Future<List<wallmodel>> Searchimages(String hint) async {
     List<wallmodel> parsed = [];
     String slink =
-        'https://api.unsplash.com/search/photos?page=1&client_id=Odh8nQzKbHvqGHEW8UbCU6kxOnalWvdmAGn34Uy3pYs&query=$hint>';
+        'https://api.unsplash.com/search/photos?page=1&client_id=<yours_apikey>&query=$hint>';
 
     int i;
     var response = await http.get(Uri.parse(slink));
@@ -69,7 +69,7 @@ class Catbase {
   Future<List<CategoryModel>> getCate() async {
 
     for(int i = 0; i < cats.length; i++){
-      String link = 'https://api.unsplash.com/topics/${cats[i]}/photos?count=30&client_id=Odh8nQzKbHvqGHEW8UbCU6kxOnalWvdmAGn34Uy3pYs';
+      String link = 'https://api.unsplash.com/topics/${cats[i]}/photos?count=30&client_id=<yours_apikey>';
 
       CategoryModel cate = CategoryModel(link: link, name: cats[i]);
 
